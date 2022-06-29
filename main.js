@@ -1,7 +1,7 @@
 ocultar();
 
 var Grupo = null;
-var numeroTabla = 0;
+var numeroTabla = null;
 
 function mostrar_ocultar(boton){
 	 numeroTabla = boton.id;
@@ -49,26 +49,44 @@ function mostrarFecha(boton){
 
 	function actualizarTabla(form){
 		form.preventDefault();
-		let local = event.target.children[1].textContent;
-  	let visitante = event.target.children[4].textContent;
+		let local = form.target.children[0].textContent;
+  	let visitante = form.target.children[3].textContent;
+		console.log(local,visitante);
   	let golesLocal = parseInt(event.target.children[2].value);
   	let golesVisitante = parseInt(event.target.children[3].value);
   	let grupo = event.target.parentElement.parentElement.classList
   	let valor_local = 0;
   	let valor_visitante = 0;
-		var tabla = document.getElementById("tabla" + numeroTabla)
+
+		let tds = document.querySelectorAll('td');
+		for (let td of tds) {
+			if (td.textContent.includes(local)) {
+				td.parentElement.children[3].textContent = 1;
+			}
+		}
+
+		// var tabla = document.getElementById("tabla" + numeroTabla)
 		for (var i = 1; i <= 4; i++) {
-    if (tabla.rows[i].cells[1].textContent === local) {
-      valor_local = i;
-    }
+    // if (tabla.rows[i].cells[1].textContent === local) {
+    //   valor_local = i;
+    // }
   }
 
-  for (var j = 1; j <= 4; j++) {
-    if (tabla.rows[j].cells[1].textContent == visitante) {
-      valor_visitante = j
-    }
-  }
+  // for (var j = 1; j <= 4; j++) {
+  //   if (tabla.rows[j].cells[1].textContent == visitante) {
+  //     valor_visitante = j
+  //   }
+  // }
 }
+
+
+
+
+
+
+
+
+
 
 
 
