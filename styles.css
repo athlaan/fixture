@@ -1,0 +1,36 @@
+#Copa{
+  position: absolute;
+  right: 30px;
+  height: 250px;
+  width: 300px;
+  top: 90px;
+}
+#banderas{
+  height: 200px;
+}
+h1{
+  text-align: center;
+}
+#Qatar{
+  resize: both;
+  height: 50px;
+  position: absolute;
+  top: 20px;
+  left: 450px;
+}
+#Qatar2{
+  resize: both;
+  height: 50px;
+  position: absolute;
+  top: 20px;
+  right: 450px;
+}
+body{
+  background-image: url(qatar-flag.gif);
+  background-size: cover;
+}
+table{
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+}
