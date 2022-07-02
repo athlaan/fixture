@@ -26,11 +26,17 @@ h1{
   right: 450px;
 }
 body{
-  background-image: url(qatar-flag.gif);
-  background-size: cover;
+  background-color: blue;
 }
 table{
   background-color: white;
   border-style: solid;
   border-color: black;
+}
+#gif-qatar{
+  position: absolute;
+  right: 30px;
+  height: 250px;
+  width: 300px;
+  top: 380px;
 }
