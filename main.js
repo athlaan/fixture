@@ -47,47 +47,60 @@ function mostrarFecha(boton){
  }
 }
 
-	function actualizarTabla(form){
-		form.preventDefault();
-		let local = form.target.children[0].textContent;
+function actualizarTabla(form){
+	form.preventDefault();
+	let local = form.target.children[0].textContent;
   	let visitante = form.target.children[3].textContent;
-		console.log(local,visitante);
-  	let golesLocal = parseInt(event.target.children[2].value);
-  	let golesVisitante = parseInt(event.target.children[3].value);
-  	let grupo = event.target.parentElement.parentElement.classList
-  	let valor_local = 0;
-  	let valor_visitante = 0;
+  	let golesLocal = parseInt(event.target.children[1].value);
+  	let golesVisitante = parseInt(event.target.children[2].value);
+  	//let grupo = event.target.parentElement.parentElement.classList
+  	let ganadorlocal = 0;
+  	let ganadorvisitante = 0;
+  	let empate = 0;
+  	if (golesLocal > golesVisitante) {
+  		ganadorlocal++;
+  	}else if (golesLocal < golesVisitante) {
+  		ganadorvisitante++;
+  	}else{
+  		empate++
+  	} 
 
-		let tds = document.querySelectorAll('td');
-		for (let td of tds) {
-			if (td.textContent.includes(local)) {
-				td.parentElement.children[3].textContent = 1;
-			}
-		}
 
-		// var tabla = document.getElementById("tabla" + numeroTabla)
-		for (var i = 1; i <= 4; i++) {
-    // if (tabla.rows[i].cells[1].textContent === local) {
-    //   valor_local = i;
-    // }
-  }
 
-  // for (var j = 1; j <= 4; j++) {
-  //   if (tabla.rows[j].cells[1].textContent == visitante) {
-  //     valor_visitante = j
-  //   }
-  // }
+  	var tabla = document.getElementById("tabla" + numeroTabla); //sacamos la tabla
+
+  	var tbody = tabla.querySelectorAll('td'); //agarramos todo el body de la tabla
+
+  	for(var td of tbody){
+  		if(td.textContent.includes(local)){ //buscamos al local
+  			//td.parentElement agarramos toda esa fila
+  			//td.parentElement.children[posicion] nos posiciona en la columna que deseamos en esa fila
+  			// td.parentElement.children[posicion].textContent = valor; // le indicamos que valor queres que tenga en esa posicion
+  			td.parentElement.children[2].textContent = parseInt(td.parentElement.children[2].textContent) + (3*ganadorlocal + empate);
+  			td.parentElement.children[3].textContent = parseInt(td.parentElement.children[3].textContent) + 1;
+  			td.parentElement.children[4].textContent = parseInt(td.parentElement.children[4].textContent) + ganadorlocal;
+  			td.parentElement.children[5].textContent = parseInt(td.parentElement.children[5].textContent) + empate;
+  			td.parentElement.children[6].textContent = parseInt(td.parentElement.children[6].textContent) + ganadorvisitante;
+  			td.parentElement.children[7].textContent = parseInt(td.parentElement.children[7].textContent) + golesLocal;
+  			td.parentElement.children[8].textContent = parseInt(td.parentElement.children[8].textContent) + golesVisitante;
+  			td.parentElement.children[9].textContent = parseInt(td.parentElement.children[9].textContent) +  Math.abs(golesVisitante - golesLocal);
+
+  		}	
+  		if (td.textContent.includes(visitante)) {
+  			td.parentElement.children[2].textContent = parseInt(td.parentElement.children[2].textContent) + (3*ganadorvisitante + empate);
+  			td.parentElement.children[3].textContent = parseInt(td.parentElement.children[3].textContent) + 1;
+  			td.parentElement.children[4].textContent = parseInt(td.parentElement.children[4].textContent) + ganadorvisitante;
+  			td.parentElement.children[5].textContent = parseInt(td.parentElement.children[5].textContent) + empate;
+  			td.parentElement.children[6].textContent = parseInt(td.parentElement.children[6].textContent) + ganadorlocal;
+  			td.parentElement.children[7].textContent = parseInt(td.parentElement.children[7].textContent) + golesVisitante;
+  			td.parentElement.children[8].textContent = parseInt(td.parentElement.children[8].textContent) + golesLocal;
+  			td.parentElement.children[9].textContent = parseInt(td.parentElement.children[9].textContent) + Math.abs(golesVisitante - golesLocal);
+
+  		}
+
+  	}
+
 }
-
-
-
-
-
-
-
-
-
-
 
 
 function obtenerGrupo(numero){
